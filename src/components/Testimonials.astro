@@ -1,0 +1,85 @@
+---
+// Testimonials section component
+import { getTestimonials } from '../lib/wordpress';
+
+const defaultTestimonials = [
+  {
+    rating: 5,
+    text: 'Мастер приехал очень быстро, буквально за 20 минут. Нашел проблему в проводке, которую не могли найти в двух сервисах. Огромное спасибо!',
+    name: 'Алексей П.',
+    car: 'Toyota Camry',
+    initial: 'А'
+  },
+  {
+    rating: 5,
+    text: 'Отличный сервис! Устанавливали сигнализацию с автозапуском. Все аккуратно, без лишних проводов. Показали как пользоваться приложением.',
+    name: 'Дмитрий К.',
+    car: 'Kia Rio',
+    initial: 'Д'
+  },
+  {
+    rating: 5,
+    text: 'Умер аккумулятор прямо у дома. Вызвала мастера, привезли новый, установили, старый забрали в зачет. Очень удобно для девушек!',
+    name: 'Елена В.',
+    car: 'Hyundai Solaris',
+    initial: 'Е'
+  }
+];
+
+const wpTestimonials = await getTestimonials();
+
+const testimonials = wpTestimonials.length > 0 ? wpTestimonials.map(post => ({
+  rating: Number(post.acf?.rating) || 5,
+  text: post.content.rendered.replace(/<[^>]+>/g, ''),
+  name: post.acf?.client_name || post.title.rendered,
+  car: post.acf?.car_model || '',
+  initial: (post.acf?.client_name || post.title.rendered).charAt(0).toUpperCase()
+})) : defaultTestimonials;
+---
+
+<div
+  class="flex flex-col items-center px-4 py-16 md:px-10 lg:px-40 bg-background-light"
+>
+  <div class="flex w-full max-w-[1200px] flex-col gap-10">
+    <h2
+      class="text-[#1c1c0d] text-3xl font-black leading-tight text-center md:text-left"
+    >
+      Отзывы клиентов
+    </h2>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {testimonials.map((review) => (
+        <div
+          class="flex flex-col justify-between rounded-2xl bg-white p-6 shadow-sm border border-transparent"
+        >
+          <div class="flex flex-col gap-4">
+            <div class="flex gap-1" aria-label={`Rating: ${review.rating} out of 5 stars`}>
+              {Array.from({ length: Math.floor(review.rating) }).map(() => (
+                <svg class="w-5 h-5 fill-current text-primary" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="text-[#1c1c0d] leading-relaxed">
+              "{review.text}"
+            </p>
+          </div>
+          <div
+            class="mt-6 flex items-center gap-3 border-t border-gray-100 pt-4"
+          >
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 font-bold text-gray-500"
+            >
+              {review.initial}
+            </div>
+            <div>
+              <p class="font-bold text-[#1c1c0d] text-sm">
+                {review.name}
+              </p>
+              <p class="text-xs text-gray-500">{review.car}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

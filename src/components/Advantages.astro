@@ -1,0 +1,67 @@
+---
+// Advantages section component
+const advantages = [
+  {
+    icon: 'build',
+    title: 'Проф. Оборудование',
+    description: 'Используем дилерские сканеры и современные осциллографы для точной диагностики.'
+  },
+  {
+    icon: 'verified_user',
+    title: 'Гарантия',
+    description: 'Даем официальную гарантию на все выполненные работы и установленные запчасти.'
+  },
+  {
+    icon: 'timer',
+    title: 'Быстрый Сервис',
+    description: 'Срочный выезд мастера в течение 30 минут. Ремонт в день обращения.'
+  },
+  {
+    icon: 'engineering',
+    title: 'Опытные Мастера',
+    description: 'Стаж специалистов более 10 лет. Знаем особенности всех марок авто.'
+  }
+];
+---
+
+<div
+  class="flex flex-col items-center px-4 py-16 md:px-10 lg:px-40 bg-white"
+>
+  <div class="flex w-full max-w-[1200px] flex-col gap-10">
+    <div class="flex flex-col gap-3 text-center md:text-left">
+      <h2
+        class="text-[#1c1c0d] text-3xl font-black leading-tight tracking-[-0.015em] md:text-4xl"
+      >
+        Наши Преимущества
+      </h2>
+      <p class="text-[#666] text-base font-normal">
+        Почему выбирают нас для ремонта вашего автомобиля
+      </p>
+    </div>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {advantages.map((advantage) => (
+        <div
+          class="group flex flex-col gap-4 rounded-2xl border border-[#f0f0f0] bg-background-light p-6 transition-all hover:shadow-lg hover:border-primary/50"
+        >
+          <div
+            class="flex size-14 items-center justify-center rounded-full bg-white shadow-sm group-hover:bg-primary transition-colors"
+          >
+            <span class="material-symbols-outlined text-3xl text-black">
+              {advantage.icon}
+            </span>
+          </div>
+          <div class="flex flex-col gap-2">
+            <h3
+              class="text-[#1c1c0d] text-lg font-bold leading-tight"
+            >
+              {advantage.title}
+            </h3>
+            <p class="text-[#666] text-sm leading-normal">
+              {advantage.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

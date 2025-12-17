@@ -1,0 +1,75 @@
+---
+// Price List section component
+const priceList = [
+  { service: 'Компьютерная диагностика', price: 'от 800 ₽', striped: false },
+  { service: 'Установка и демонтаж автосигнализации', price: 'от 3000 ₽', striped: true },
+  { service: 'Заправка автокондиционеров, ремонт электрической части', price: 'от 1200 ₽', striped: false },
+  { service: 'Установка аудио, видео, мультимедиа', price: 'от 2000 ₽', striped: true },
+  { service: 'Ремонт, восстановление электропроводки', price: 'от 1500 ₽', striped: false },
+  { service: 'Ремонт и замена генератора, стартера, бензонасоса', price: 'от 1500 ₽', striped: true },
+  { service: 'Запуск двигателя автомобиля и необходимый ремонт', price: 'от 1000 ₽', striped: false },
+  { service: 'Выезд мастера по городу', price: 'от 1000 ₽', striped: true },
+  { service: 'Замена ламп / предохранителей', price: 'от 300 ₽', striped: false },
+  { service: 'Обслуживание аккумулятора', price: 'от 500 ₽', striped: true }
+];
+---
+
+<div
+  id="priceSection"
+  class="flex flex-col items-center px-4 py-16 md:px-10 lg:px-40 bg-white"
+>
+  <div class="flex w-full max-w-[960px] flex-col gap-8">
+    <h2
+      class="text-[#1c1c0d] text-3xl font-black leading-tight tracking-[-0.015em] text-center"
+    >
+      Прайс-лист на услуги
+    </h2>
+    <div
+      class="w-full overflow-hidden rounded-2xl border border-[#e5e5e5]"
+    >
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead class="bg-gray-50">
+            <tr>
+              <th
+                class="px-6 py-4 text-sm font-bold uppercase tracking-wider text-gray-500"
+              >
+                Наименование услуги
+              </th>
+              <th
+                class="px-6 py-4 text-right text-sm font-bold uppercase tracking-wider text-gray-500"
+              >
+                Стоимость
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="bg-white divide-y divide-gray-100"
+          >
+            {priceList.map((item) => (
+              <tr
+                class={`${
+                  item.striped
+                    ? 'bg-[#fcfcf8]'
+                    : ''
+                } hover:bg-gray-50 transition-colors`}
+              >
+                <td class="px-6 py-4 text-base text-[#1c1c0d]">
+                  {item.service}
+                </td>
+                <td class="px-6 py-4 text-right font-bold text-black">
+                  {item.price}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-gray-50 px-6 py-4 text-center">
+        <p class="text-sm text-gray-500">
+          Точная стоимость работ определяется мастером после диагностики.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,387 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CallModal from '../components/CallModal.astro';
+import '../styles/global.css';
+
+const values = [
+  {
+    icon: 'handshake',
+    title: 'Честность',
+    description: 'Прозрачные цены без скрытых платежей. Всегда предупреждаем о возможных дополнительных расходах.'
+  },
+  {
+    icon: 'workspace_premium',
+    title: 'Качество',
+    description: 'Используем только оригинальные запчасти и проверенные комплектующие от надежных поставщиков.'
+  },
+  {
+    icon: 'support_agent',
+    title: 'Ответственность',
+    description: 'Гарантируем результат каждой работы. Несем полную ответственность за качество ремонта.'
+  },
+  {
+    icon: 'celebration',
+    title: 'Клиентоориентированность',
+    description: 'Индивидуальный подход к каждому клиенту. Работаем в удобное для вас время.'
+  }
+];
+
+const reasons = [
+  {
+    icon: 'emoji_events',
+    title: 'Большой опыт',
+    description: 'Более 10 лет успешной работы в сфере автоэлектрики'
+  },
+  {
+    icon: 'sensors',
+    title: 'Современное оборудование',
+    description: 'Профессиональные дилерские сканеры и осциллографы'
+  },
+  {
+    icon: 'car_repair',
+    title: 'Все марки авто',
+    description: 'Работаем с любыми марками и моделями автомобилей'
+  },
+  {
+    icon: 'schedule',
+    title: 'Работаем без выходных',
+    description: 'Ежедневно с 8:00 до 22:00, включая праздники'
+  },
+  {
+    icon: 'price_check',
+    title: 'Адекватные цены',
+    description: 'Честное ценообразование и гибкая система скидок'
+  },
+  {
+    icon: 'rocket_launch',
+    title: 'Быстрое реагирование',
+    description: 'Выезд мастера в течение 30 минут после вызова'
+  }
+];
+
+const process = [
+  {
+    number: '01',
+    title: 'Связь с нами',
+    description: 'Позвоните нам или оставьте заявку на сайте. Мы ответим в течение 5 минут и уточним детали.',
+    icon: 'call'
+  },
+  {
+    number: '02',
+    title: 'Диагностика',
+    description: 'Проводим полную компьютерную диагностику автомобиля и выявляем все неисправности.',
+    icon: 'troubleshoot'
+  },
+  {
+    number: '03',
+    title: 'Согласование',
+    description: 'Озвучиваем стоимость работ и запчастей. Начинаем ремонт только после вашего одобрения.',
+    icon: 'task_alt'
+  },
+  {
+    number: '04',
+    title: 'Ремонт и гарантия',
+    description: 'Выполняем ремонт качественно и в срок. Выдаем гарантию на все работы.',
+    icon: 'verified'
+  }
+];
+
+const stats = [
+  { number: '3500+', label: 'Довольных клиентов', icon: 'sentiment_satisfied' },
+  { number: '10+', label: 'Лет опыта работы', icon: 'military_tech' },
+  { number: '98%', label: 'Положительных отзывов', icon: 'star' },
+  { number: '24/7', label: 'Консультации', icon: 'support_agent' }
+];
+---
+
+<Layout title="О компании - AutoElectric Service" description="Профессиональный автоэлектрик в Краснодаре. Более 10 лет опыта, современное оборудование, гарантия качества.">
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <Header />
+    
+    <!-- Hero Section -->
+    <div class="flex flex-col">
+      <div class="w-full">
+        <div
+          class="relative flex min-h-[480px] flex-col justify-center overflow-hidden bg-gradient-to-br from-orange-500 via-primary to-orange-600 py-20 px-4 md:px-10 lg:px-40"
+        >
+          <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"></div>
+          
+          <div class="relative flex max-w-[900px] flex-col gap-6 animate-fade-in-up">
+            <div class="flex flex-col gap-4 text-left">
+              <span
+                class="inline-block w-fit rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 text-sm font-bold uppercase text-white border border-white/30"
+              >
+                О нашей компании
+              </span>
+              <h1
+                class="text-white text-4xl font-black leading-tight tracking-[-0.033em] sm:text-5xl md:text-6xl"
+              >
+                Ваш надежный партнер в автоэлектрике
+              </h1>
+              <p
+                class="text-white/90 text-lg font-normal leading-relaxed max-w-[700px]"
+              >
+                Мы специализируемся на диагностике и ремонте электрооборудования автомобилей любых марок. 
+                Наша миссия — обеспечить безопасность и комфорт вашего вождения через качественный сервис.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values Section -->
+    <div class="flex flex-col items-center px-4 py-20 md:px-10 lg:px-40 bg-white">
+      <div class="flex w-full max-w-[1200px] flex-col gap-12">
+        <div class="flex flex-col gap-3 text-center animate-fade-in-up">
+          <h2
+            class="text-[#1c1c0d] text-3xl font-black leading-tight tracking-[-0.015em] md:text-4xl"
+          >
+            Наши ценности
+          </h2>
+          <p class="text-[#666] text-base font-normal max-w-[600px] mx-auto">
+            Принципы, которыми мы руководствуемся в работе каждый день
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {values.map((value, index) => (
+            <div
+              class="group flex flex-col gap-4 rounded-2xl border border-[#f0f0f0] bg-background-light p-6 transition-all hover:shadow-xl hover:border-primary/50 hover:-translate-y-2"
+              style={`animation: fadeInUp 0.6s ease-out ${index * 0.1}s both`}
+            >
+              <div
+                class="flex size-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-orange-600 shadow-lg group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-3xl text-white">
+                  {value.icon}
+                </span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3
+                  class="text-[#1c1c0d] text-xl font-bold leading-tight"
+                >
+                  {value.title}
+                </h3>
+                <p class="text-[#666] text-sm leading-normal">
+                  {value.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="flex flex-col items-center px-4 py-20 md:px-10 lg:px-40 bg-background-light">
+      <div class="flex w-full max-w-[1200px] flex-col gap-12">
+        <div class="flex flex-col gap-3 text-center animate-fade-in-up">
+          <h2
+            class="text-[#1c1c0d] text-3xl font-black leading-tight tracking-[-0.015em] md:text-4xl"
+          >
+            Почему выбирают нас
+          </h2>
+          <p class="text-[#666] text-base font-normal max-w-[600px] mx-auto">
+            Более 3500 довольных клиентов доверяют нам свои автомобили
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {reasons.map((reason, index) => (
+            <div
+              class="group flex flex-col gap-4 rounded-2xl bg-white border border-[#f0f0f0] p-6 transition-all hover:shadow-lg hover:border-primary"
+              style={`animation: fadeInUp 0.6s ease-out ${index * 0.1}s both`}
+            >
+              <div
+                class="flex size-14 items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary transition-colors"
+              >
+                <span class="material-symbols-outlined text-3xl text-primary group-hover:text-white transition-colors">
+                  {reason.icon}
+                </span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3
+                  class="text-[#1c1c0d] text-lg font-bold leading-tight"
+                >
+                  {reason.title}
+                </h3>
+                <p class="text-[#666] text-sm leading-normal">
+                  {reason.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Work Process Section -->
+    <div class="flex flex-col items-center px-4 py-20 md:px-10 lg:px-40 bg-white">
+      <div class="flex w-full max-w-[1200px] flex-col gap-12">
+        <div class="flex flex-col gap-3 text-center animate-fade-in-up">
+          <h2
+            class="text-[#1c1c0d] text-3xl font-black leading-tight tracking-[-0.015em] md:text-4xl"
+          >
+            Как мы работаем
+          </h2>
+          <p class="text-[#666] text-base font-normal max-w-[600px] mx-auto">
+            Простой и понятный процесс от заявки до готового результата
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {process.map((step, index) => (
+            <div
+              class="group relative flex flex-col gap-4 rounded-2xl bg-gradient-to-br from-background-light to-white border border-[#f0f0f0] p-8 transition-all hover:shadow-xl hover:border-primary/50"
+              style={`animation: fadeInUp 0.6s ease-out ${index * 0.15}s both`}
+            >
+              <div class="absolute top-6 right-6 text-6xl font-black text-primary/10 group-hover:text-primary/20 transition-colors">
+                {step.number}
+              </div>
+              <div
+                class="flex size-16 items-center justify-center rounded-full bg-primary shadow-lg z-10"
+              >
+                <span class="material-symbols-outlined text-3xl text-white">
+                  {step.icon}
+                </span>
+              </div>
+              <div class="flex flex-col gap-2 z-10">
+                <h3
+                  class="text-[#1c1c0d] text-xl font-bold leading-tight"
+                >
+                  {step.title}
+                </h3>
+                <p class="text-[#666] text-base leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="flex flex-col items-center px-4 py-20 md:px-10 lg:px-40 bg-gradient-to-br from-primary via-orange-500 to-orange-600 relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0YzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHptMC0xMGMwLTIuMjEtMS43OS00LTQtNHMtNCAxLjc5LTQgNCAxLjc5IDQgNCA0IDQtMS43OSA0LTR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-50"></div>
+      
+      <div class="flex w-full max-w-[1200px] flex-col gap-12 relative z-10">
+        <div class="flex flex-col gap-3 text-center animate-fade-in-up">
+          <h2
+            class="text-white text-3xl font-black leading-tight tracking-[-0.015em] md:text-4xl"
+          >
+            Наши достижения в цифрах
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat, index) => (
+            <div
+              class="flex flex-col items-center gap-4 text-center group"
+              style={`animation: fadeInUp 0.6s ease-out ${index * 0.1}s both`}
+            >
+              <div class="flex size-20 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 group-hover:bg-white/30 group-hover:scale-110 transition-all">
+                <span class="material-symbols-outlined text-4xl text-white">
+                  {stat.icon}
+                </span>
+              </div>
+              <div class="flex flex-col gap-1">
+                <div class="text-5xl font-black text-white">
+                  {stat.number}
+                </div>
+                <div class="text-white/90 text-base font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Quality Guarantee Section -->
+    <div class="flex flex-col items-center px-4 py-20 md:px-10 lg:px-40 bg-white">
+      <div class="flex w-full max-w-[1200px] flex-col gap-12">
+        <div class="flex flex-col gap-3 text-center animate-fade-in-up">
+          <h2
+            class="text-[#1c1c0d] text-3xl font-black leading-tight tracking-[-0.015em] md:text-4xl"
+          >
+            Гарантии качества
+          </h2>
+          <p class="text-[#666] text-base font-normal max-w-[700px] mx-auto">
+            Мы уверены в качестве наших услуг и предоставляем официальные гарантии
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div class="flex flex-col gap-6 rounded-2xl bg-gradient-to-br from-background-light to-white border-2 border-primary/20 p-8 animate-fade-in-up">
+            <div class="flex items-center gap-4">
+              <div class="flex size-16 items-center justify-center rounded-full bg-primary">
+                <span class="material-symbols-outlined text-3xl text-white">
+                  verified_user
+                </span>
+              </div>
+              <h3 class="text-[#1c1c0d] text-2xl font-bold">
+                Гарантия на работы
+              </h3>
+            </div>
+            <p class="text-[#666] text-base leading-relaxed">
+              Предоставляем официальную гарантию на все виды выполненных работ. 
+              Срок гарантии зависит от типа ремонта и составляет от 3 до 12 месяцев.
+            </p>
+          </div>
+          <div class="flex flex-col gap-6 rounded-2xl bg-gradient-to-br from-background-light to-white border-2 border-primary/20 p-8 animate-fade-in-up" style="animation-delay: 0.1s">
+            <div class="flex items-center gap-4">
+              <div class="flex size-16 items-center justify-center rounded-full bg-primary">
+                <span class="material-symbols-outlined text-3xl text-white">
+                  inventory
+                </span>
+              </div>
+              <h3 class="text-[#1c1c0d] text-2xl font-bold">
+                Гарантия на запчасти
+              </h3>
+            </div>
+            <p class="text-[#666] text-base leading-relaxed">
+              Все установленные запчасти и комплектующие имеют гарантию производителя. 
+              Используем только оригинальные детали и проверенные аналоги.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="flex flex-col items-center px-4 py-16 md:px-10 lg:px-40 bg-background-light">
+      <div class="flex w-full max-w-[1200px] flex-col gap-8 items-center text-center animate-fade-in-up">
+        <div class="flex flex-col gap-4">
+          <h2 class="text-[#1c1c0d] text-3xl font-black leading-tight tracking-[-0.015em] md:text-4xl">
+            Доверьте свой автомобиль профессионалам
+          </h2>
+          <p class="text-[#666] text-lg max-w-[600px] mx-auto">
+            Оставьте заявку прямо сейчас и получите бесплатную консультацию специалиста
+          </p>
+        </div>
+        <button
+          onclick="document.getElementById('callModal').showModal()"
+          class="flex h-14 min-w-[200px] cursor-pointer items-center justify-center rounded-full bg-primary px-8 text-[#1c1c0d] text-lg font-bold leading-normal tracking-[0.015em] hover:bg-orange-500 transition-all shadow-[0_0_20px_rgba(255,149,0,0.4)] hover:shadow-[0_0_30px_rgba(255,149,0,0.6)] hover:scale-105"
+        >
+          <span class="truncate">Заказать звонок</span>
+        </button>
+      </div>
+    </div>
+
+    <Footer />
+    <CallModal />
+  </div>
+</Layout>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

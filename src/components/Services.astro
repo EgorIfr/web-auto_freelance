@@ -1,0 +1,134 @@
+---
+// Services section component
+import { getServices, getFeaturedImage } from '../lib/wordpress';
+
+const defaultServices = [
+  {
+    title: 'Компьютерная диагностика',
+    price: 'от 800₽',
+    description: 'Чтение и сброс ошибок, адаптация блоков, проверка датчиков.',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuChNT5Nhj_RDz8XyFjwmG19w4eA77V8QUgFu0HdJycloS2KqfMm6_cQVZYLLFi83VFuX16fooNSn-RreATuMnmwr3Wzw_JOCbJRVVnXFJ-alNKG9UcLD6x3liiqTDCzQjfO8MQpLcYaSZlHPrE4qADN7VUyw91g0zqcRgDJA_k-GafEx-OpglJGa2Rq7dye7eWW2EXR4KY40eMShX9m-PHVrlWALqupoiNayjic9a8Uay6mmnn4EO-6BO7E0DF52E3RWGPbXxmaYEc',
+    alt: 'Laptop connected to car dashboard for diagnostics'
+  },
+  {
+    title: 'Установка и демонтаж автосигнализации',
+    price: 'от 3000₽',
+    description: 'Монтаж и демонтаж охранных систем, автозапуск, GPS-трекеры, парктроники.',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAek0xTk5OSZZnETxwlq0OZ9P3OoB7o-PHwx3iMtj1ONg009pElnLTEYzkId3V3MZX5LCSgxs4KQ7LNpL2nB_nX581opJt3SUJ8D7wC9sjQJ1HH-8oLcyG3iHWjwCGHsTX1wYS6707Xmf9FAzu2g4EngpVyOEpp9jeVjin_JRls9Lr_guDnzGTKdFoGLUzD8Y5lwG-1b7uqPujgXt-GJmwnPua8w4gJipDEll9h7jKkDig7qYHtrp4m27PqUhyOtLTC4_jkklzdLk4',
+    alt: 'Car key fob and alarm system components'
+  },
+  {
+    title: 'Заправка автокондиционеров',
+    price: 'от 1200₽',
+    description: 'Диагностика системы кондиционирования, заправка фреоном, ремонт электрической части.',
+    image: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=800&q=80',
+    alt: 'Car air conditioning service and refill'
+  },
+  {
+    title: 'Установка аудио, видео, мультимедиа',
+    price: 'от 2000₽',
+    description: 'Установка автозвука, магнитол, усилителей, сабвуферов, камер заднего вида.',
+    image: '',
+    alt: 'Car audio system and multimedia installation'
+  },
+  {
+    title: 'Ремонт, восстановление электропроводки',
+    price: 'от 1500₽',
+    description: 'Поиск обрывов, замыканий, восстановление косы, замена разъемов.',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC777NjCkz-BQ8EH80ZAm379ihJzYJdizGhYIHBULNcEwduj29byyxZzsDFlNIs-nukJPeTD73-jZVhdcODGS8Ke-Vyd-c3kRdpgFlkWX1kdiRk6HyWWSSAelUx4LIDDJgOFNmS1EUYDh_2aMTSu_dOQRBpL-z4BE67y11f8DU_0fMF4UDVKjndTHE4lWpGjK1pERC0pkjVfcrl0ROknPHmKED3Y_RDI3Q675or7n5fMyp-BPuLWHtnb-_t10dn_Y79c9TQjn8wsx4',
+    alt: 'Hands repairing car wiring harness'
+  },
+  {
+    title: 'Ремонт и замена генератора, стартера, бензонасоса',
+    price: 'от 1500₽',
+    description: 'Диагностика и ремонт генератора, стартера, замена бензонасоса, форсунок.',
+    image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80',
+    alt: 'Car alternator and starter repair'
+  },
+  {
+    title: 'Запуск двигателя автомобиля',
+    price: 'от 1000₽',
+    description: 'Экстренный запуск двигателя, диагностика и устранение причин незапуска.',
+    image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80',
+    alt: 'Car engine starting service'
+  },
+  {
+    title: 'Обслуживание аккумулятора',
+    price: 'от 500₽',
+    description: 'Проверка емкости, поиск утечек тока, зарядка и замена АКБ.',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDWsFfzvtQxQpQAA8BvbRG4TL4Uo82UFezecYWZehuhcQonAh6KwcyELX2iPRTueUdE5f98c1FT2PsVcuNnW-dwmdBCI593cc8lhR9CdPowI9QRJ5gTQYjXSFf4nsP9OvmJhREjykw1ZLF0oukCnmF7gQoCsPkDKQj5ezth7JsizR6Tt0FXZZreA1b-w8B3s0ayBEo2mLD2Rf4864a2QV8IPc3gFdYd6pfJbdj1JO0uySragXpLLzMS7mjkw2QBWBw16OCSVdsvGMI',
+    alt: 'Car battery check with multimeter'
+  }
+];
+
+const wpServices = await getServices();
+
+const services = wpServices.length > 0 ? wpServices.map(post => ({
+  title: post.title.rendered,
+  price: post.acf?.price || '',
+  description: post.acf?.short_description || post.excerpt.rendered.replace(/<[^>]+>/g, ''),
+  image: getFeaturedImage(post),
+  alt: post.title.rendered
+})) : defaultServices;
+---
+
+<div
+  id="services"
+  class="flex flex-col items-center px-4 py-16 md:px-10 lg:px-40 bg-background-light"
+>
+  <div class="flex w-full max-w-[1200px] flex-col gap-10">
+    <div class="flex items-center justify-between">
+      <h2
+        class="text-[#1c1c0d] text-3xl font-black leading-tight tracking-[-0.015em] md:text-4xl"
+      >
+        Услуги
+      </h2>
+      <button
+        class="hidden sm:flex text-sm font-bold underline decoration-primary decoration-2 underline-offset-4 hover:text-gray-600 transition-colors"
+      >
+        Все услуги
+      </button>
+    </div>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      {services.map((service) => (
+        <div
+          class="flex flex-col rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 group"
+        >
+          <div
+            class="flex flex-col items-stretch gap-4 sm:flex-row sm:items-start"
+          >
+            <div
+              class="aspect-video w-full rounded-lg bg-cover bg-center sm:w-1/3"
+              role="img"
+              aria-label={service.alt}
+              style={`background-image: url('${service.image}');`}
+            ></div>
+            <div class="flex flex-1 flex-col justify-between gap-3 py-1">
+              <div>
+                <div class="mb-2 flex items-center justify-between">
+                  <span
+                    class="rounded-full bg-primary/20 px-3 py-1 text-xs font-bold text-black"
+                  >
+                    {service.price}
+                  </span>
+                </div>
+                <h3 class="text-xl font-bold text-[#1c1c0d]">
+                  {service.title}
+                </h3>
+                <p class="mt-2 text-sm text-[#666]">
+                  {service.description}
+                </p>
+              </div>
+              <button
+                onclick="document.getElementById('callModal').showModal()"
+                class="mt-2 flex w-full items-center justify-center rounded-full bg-background-light py-2 text-sm font-bold transition-colors group-hover:bg-primary group-hover:text-black"
+              >
+                Подробнее
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

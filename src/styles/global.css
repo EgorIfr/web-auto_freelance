@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Spline Sans', 'Noto Sans', sans-serif;
+}
+
+input:active,
+input:focus,
+textarea:active,
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Dark mode transitions */
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}

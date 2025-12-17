@@ -1,0 +1,143 @@
+---
+// Footer component with contact information and map
+---
+
+<footer
+  id="contacts"
+  class="bg-white border-t border-[#e5e5e5]"
+>
+  <div class="grid grid-cols-1 lg:grid-cols-2">
+    <!-- Contact Info -->
+    <div
+      class="flex flex-col justify-center px-4 py-16 md:px-16 lg:px-24 gap-8"
+    >
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-3 mb-2">
+          <div
+            class="flex items-center justify-center size-8 rounded-full bg-primary text-black"
+          >
+            <span class="material-symbols-outlined text-lg">
+              electric_bolt
+            </span>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight">
+            AutoElectric
+          </h2>
+        </div>
+        <p class="text-gray-500 max-w-sm">
+          Профессиональный ремонт автоэлектрики любой сложности в
+          Краснодаре. Гарантия качества и честные цены.
+        </p>
+      </div>
+      <div class="flex flex-col gap-6">
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-primary mt-1">
+            location_on
+          </span>
+          <div>
+            <h4 class="font-bold text-[#1c1c0d]">
+              Адрес
+            </h4>
+            <p class="text-gray-600">
+              г. Краснодар, ул. имени Дмитрия Благоева, 52А
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-primary mt-1">
+            schedule
+          </span>
+          <div>
+            <h4 class="font-bold text-[#1c1c0d]">
+              Режим работы
+            </h4>
+            <p class="text-gray-600">
+              Пн-Вс: 09:00 - 20:00
+            </p>
+            <p class="text-gray-600">Без выходных</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-primary mt-1">
+            call
+          </span>
+          <div>
+            <h4 class="font-bold text-[#1c1c0d]">
+              Контакты
+            </h4>
+            <a
+              class="text-lg font-bold hover:text-primary transition-colors block"
+              href="tel:+79991234567"
+            >
+              +7 (999) 123-45-67
+            </a>
+            <div class="flex gap-3 mt-3">
+              <a
+                class="size-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-green-500 hover:text-white transition-all text-gray-700"
+                href="https://wa.me/79991234567"
+                aria-label="WhatsApp"
+              >
+                <span class="material-symbols-outlined text-lg">
+                  chat
+                </span>
+              </a>
+              <a
+                class="size-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-blue-500 hover:text-white transition-all text-gray-700"
+                href="https://t.me/autoelectric_krd"
+                aria-label="Telegram"
+              >
+                <span class="material-symbols-outlined text-lg">
+                  send
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-xs text-gray-400 mt-4">
+        © 2023 AutoElectric. Все права защищены.
+      </div>
+    </div>
+    <!-- Yandex Map (iframe - без API ключа) - Декоративный дизайн -->
+    <div class="relative lg:h-auto min-h-[400px] flex items-center justify-center p-4 lg:p-8 bg-gradient-to-br from-gray-50 to-white">
+      <!-- Декоративный акцент сверху -->
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-orange-400 to-primary"></div>
+      
+      <div class="relative w-full h-full max-h-[500px] lg:max-h-none">
+        <!-- Декоративная рамка с тенью -->
+        <div class="absolute -inset-2 bg-gradient-to-br from-primary/20 to-orange-200/20 rounded-3xl blur-xl"></div>
+        
+        <!-- Контейнер карты -->
+        <div class="relative h-[380px] lg:h-[450px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white ring-2 ring-primary/30">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?ll=38.980700%2C45.036200&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjAwODI0OEJU0KDQvtGB0YHQuNGPLCDQmtGA0LDRgdC90L7QtNCw0YAsINGD0LvQuNGG0LAg0LjQvNC10L3QuCDQlNC80LjRgtGA0LjRjyDQkdC70LDQs9C-0LXQstCwLCA1MtCQIgoNRdMcQhXN8VxC&z=17"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            allowfullscreen="true"
+            style="position:relative; display:block;"
+            aria-label="Map showing location in Krasnodar"
+          ></iframe>
+        </div>
+        
+        <!-- Декоративный badge с адресом -->
+        <div class="absolute bottom-4 left-4 right-4 lg:left-6 lg:right-auto lg:bottom-6">
+          <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-4 border border-primary/20 max-w-md">
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 size-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary text-xl">location_on</span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-0.5">Наш адрес</p>
+                <p class="text-sm font-bold text-[#1c1c0d] leading-tight">
+                  г. Краснодар<br/>
+                  ул. имени Дмитрия Благоева, 52А
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

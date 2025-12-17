@@ -1,0 +1,54 @@
+---
+// Hero section component
+---
+
+<div class="flex flex-col">
+  <div class="w-full">
+    <div
+      class="relative flex min-h-[560px] flex-col justify-center overflow-hidden bg-cover bg-center py-20 px-4 md:px-10 lg:px-40"
+      aria-label="Close up of mechanic hands working on car fuse box with electrical testing tool"
+      style="
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.7) 100%
+          ),
+          url('https://lh3.googleusercontent.com/aida-public/AB6AXuANKAaYHepV-jJ0mb2lyNXr1sBY2blBCQXTJ3yYkc5jrPzTWdl0Q2QUDDnnSPEVdmTjxPlSubmpdfnO0hT_8RyuekfRACIUEFZJSFBxaBOf43fgJSY8Fket2cpN5mzijrqL8Oi97AkxN-Nwj8BuZQvSIE07hoAlg2gk2Fq1van7V-bJAz0cpT0QmBw8JisYgWVNAYHSBMEmg5bRz8F3IQ5VEBSWngyaJyeH5KdnVyKN4pH5bE4Uso5RkN8X8tpvnVcfVtX5uT37Jy0');
+      "
+    >
+      <div class="flex max-w-[800px] flex-col gap-6 animate-fade-in-up">
+        <div class="flex flex-col gap-3 text-left">
+          <span
+            class="inline-block w-fit rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase text-black"
+          >
+            Краснодарский край
+          </span>
+          <h1
+            class="text-white text-4xl font-black leading-tight tracking-[-0.033em] sm:text-5xl md:text-6xl"
+          >
+            Профессиональный автоэлектрик в Краснодаре
+          </h1>
+          <h2
+            class="text-gray-200 text-base font-normal leading-relaxed sm:text-lg max-w-[600px]"
+          >
+            Компьютерная диагностика, ремонт проводки, установка
+            сигнализаций. Выезд к клиенту или ремонт в сервисе.
+          </h2>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <button
+            onclick="document.getElementById('callModal').showModal()"
+            class="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-full bg-primary px-6 text-[#1c1c0d] text-base font-bold leading-normal tracking-[0.015em] hover:bg-orange-500 transition-all shadow-[0_0_15px_rgba(255,149,0,0.4)]"
+          >
+            <span class="truncate">Вызвать мастера</span>
+          </button>
+          <button
+            onclick="document.getElementById('priceSection').scrollIntoView({behavior: 'smooth'})"
+            class="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/30 px-6 text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-white/20 transition-all"
+          >
+            <span class="truncate">Узнать цены</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
