@@ -2,62 +2,101 @@
 // Services section component
 import { getServices, getFeaturedImage } from '../lib/wordpress';
 
+// =========================================================
+// ИНСТРУКЦИЯ ДЛЯ КЛИЕНТА: Фотографии услуг
+// =========================================================
+// Создайте папку: /public/images/services/
+// Поместите туда следующие фотографии (размер 800x533px, JPG/WebP):
+//
+//  service-1-diagnostics.jpg   — Компьютерная диагностика
+//                                 (пример: ноутбук + сканер подключен к авто)
+//
+//  service-2-alarm.jpg         — Установка автосигнализации
+//                                 (пример: брелок сигнализации, монтаж)
+//
+//  service-3-ac.jpg            — Заправка кондиционеров
+//                                 (пример: заправка фреоном, манометры)
+//
+//  service-4-audio.jpg         — Аудио/Мультимедиа
+//                                 (пример: автомагнитола, колонки, установка)
+//
+//  service-5-wiring.jpg        — Ремонт проводки
+//                                 (пример: руки мастера с проводкой)
+//
+//  service-6-generator.jpg     — Генератор/Стартер/Бензонасос
+//                                 (пример: генератор двигателя)
+//
+//  service-7-start.jpg         — Запуск двигателя
+//                                 (пример: прикуривание аккумулятора)
+//
+//  service-8-battery.jpg       — Обслуживание аккумулятора
+//                                 (пример: проверка АКБ мультиметром)
+// =========================================================
+
 const defaultServices = [
   {
     title: 'Компьютерная диагностика',
     price: 'от 800₽',
     description: 'Чтение и сброс ошибок, адаптация блоков, проверка датчиков.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuChNT5Nhj_RDz8XyFjwmG19w4eA77V8QUgFu0HdJycloS2KqfMm6_cQVZYLLFi83VFuX16fooNSn-RreATuMnmwr3Wzw_JOCbJRVVnXFJ-alNKG9UcLD6x3liiqTDCzQjfO8MQpLcYaSZlHPrE4qADN7VUyw91g0zqcRgDJA_k-GafEx-OpglJGa2Rq7dye7eWW2EXR4KY40eMShX9m-PHVrlWALqupoiNayjic9a8Uay6mmnn4EO-6BO7E0DF52E3RWGPbXxmaYEc',
-    alt: 'Laptop connected to car dashboard for diagnostics'
+    // ФОТО: /public/images/services/service-1-diagnostics.jpg
+    image: '/images/services/service-1-diagnostics.jpg',
+    alt: 'Компьютерная диагностика автомобиля — сканер подключен к бортовому компьютеру'
   },
   {
     title: 'Установка и демонтаж автосигнализации',
     price: 'от 3000₽',
     description: 'Монтаж и демонтаж охранных систем, автозапуск, GPS-трекеры, парктроники.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAek0xTk5OSZZnETxwlq0OZ9P3OoB7o-PHwx3iMtj1ONg009pElnLTEYzkId3V3MZX5LCSgxs4KQ7LNpL2nB_nX581opJt3SUJ8D7wC9sjQJ1HH-8oLcyG3iHWjwCGHsTX1wYS6707Xmf9FAzu2g4EngpVyOEpp9jeVjin_JRls9Lr_guDnzGTKdFoGLUzD8Y5lwG-1b7uqPujgXt-GJmwnPua8w4gJipDEll9h7jKkDig7qYHtrp4m27PqUhyOtLTC4_jkklzdLk4',
-    alt: 'Car key fob and alarm system components'
+    // ФОТО: /public/images/services/service-2-alarm.jpg
+    image: '/images/services/service-2-alarm.jpg',
+    alt: 'Установка автосигнализации — брелок и компоненты охранной системы'
   },
   {
     title: 'Заправка автокондиционеров',
     price: 'от 1200₽',
     description: 'Диагностика системы кондиционирования, заправка фреоном, ремонт электрической части.',
-    image: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=800&q=80',
-    alt: 'Car air conditioning service and refill'
+    // ФОТО: /public/images/services/service-3-ac.jpg
+    image: '/images/services/service-3-ac.jpg',
+    alt: 'Заправка автокондиционера фреоном — диагностика и обслуживание'
   },
   {
     title: 'Установка аудио, видео, мультимедиа',
     price: 'от 2000₽',
     description: 'Установка автозвука, магнитол, усилителей, сабвуферов, камер заднего вида.',
-    image: '',
-    alt: 'Car audio system and multimedia installation'
+    // ФОТО: /public/images/services/service-4-audio.jpg
+    image: '/images/services/service-4-audio.jpg',
+    alt: 'Установка автозвука и мультимедиа — магнитола, усилитель, сабвуфер'
   },
   {
     title: 'Ремонт, восстановление электропроводки',
     price: 'от 1500₽',
     description: 'Поиск обрывов, замыканий, восстановление косы, замена разъемов.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC777NjCkz-BQ8EH80ZAm379ihJzYJdizGhYIHBULNcEwduj29byyxZzsDFlNIs-nukJPeTD73-jZVhdcODGS8Ke-Vyd-c3kRdpgFlkWX1kdiRk6HyWWSSAelUx4LIDDJgOFNmS1EUYDh_2aMTSu_dOQRBpL-z4BE67y11f8DU_0fMF4UDVKjndTHE4lWpGjK1pERC0pkjVfcrl0ROknPHmKED3Y_RDI3Q675or7n5fMyp-BPuLWHtnb-_t10dn_Y79c9TQjn8wsx4',
-    alt: 'Hands repairing car wiring harness'
+    // ФОТО: /public/images/services/service-5-wiring.jpg
+    image: '/images/services/service-5-wiring.jpg',
+    alt: 'Ремонт электропроводки автомобиля — поиск и устранение замыканий'
   },
   {
     title: 'Ремонт и замена генератора, стартера, бензонасоса',
     price: 'от 1500₽',
     description: 'Диагностика и ремонт генератора, стартера, замена бензонасоса, форсунок.',
-    image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80',
-    alt: 'Car alternator and starter repair'
+    // ФОТО: /public/images/services/service-6-generator.jpg
+    image: '/images/services/service-6-generator.jpg',
+    alt: 'Ремонт генератора и стартера — замена и восстановление'
   },
   {
     title: 'Запуск двигателя автомобиля',
     price: 'от 1000₽',
     description: 'Экстренный запуск двигателя, диагностика и устранение причин незапуска.',
-    image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80',
-    alt: 'Car engine starting service'
+    // ФОТО: /public/images/services/service-7-start.jpg
+    image: '/images/services/service-7-start.jpg',
+    alt: 'Экстренный запуск двигателя — прикуривание и диагностика'
   },
   {
     title: 'Обслуживание аккумулятора',
     price: 'от 500₽',
     description: 'Проверка емкости, поиск утечек тока, зарядка и замена АКБ.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDWsFfzvtQxQpQAA8BvbRG4TL4Uo82UFezecYWZehuhcQonAh6KwcyELX2iPRTueUdE5f98c1FT2PsVcuNnW-dwmdBCI593cc8lhR9CdPowI9QRJ5gTQYjXSFf4nsP9OvmJhREjykw1ZLF0oukCnmF7gQoCsPkDKQj5ezth7JsizR6Tt0FXZZreA1b-w8B3s0ayBEo2mLD2Rf4864a2QV8IPc3gFdYd6pfJbdj1JO0uySragXpLLzMS7mjkw2QBWBw16OCSVdsvGMI',
-    alt: 'Car battery check with multimeter'
+    // ФОТО: /public/images/services/service-8-battery.jpg
+    image: '/images/services/service-8-battery.jpg',
+    alt: 'Обслуживание аккумулятора — проверка мультиметром и замена АКБ'
   }
 ];
 
@@ -98,11 +137,18 @@ const services = wpServices.length > 0 ? wpServices.map(post => ({
             class="flex flex-col items-stretch gap-4 sm:flex-row sm:items-start"
           >
             <div
-              class="aspect-video w-full rounded-lg bg-cover bg-center sm:w-1/3"
+              class="aspect-video w-full rounded-lg bg-cover bg-center sm:w-1/3 relative overflow-hidden"
               role="img"
               aria-label={service.alt}
-              style={`background-image: url('${service.image}');`}
-            ></div>
+              style={service.image ? `background-image: url('${service.image}');` : ''}
+            >
+              {!service.image && (
+                <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col items-center justify-center gap-2">
+                  <span class="material-symbols-outlined text-3xl text-gray-400">image</span>
+                  <span class="text-xs text-gray-400 font-medium">Фото скоро</span>
+                </div>
+              )}
+            </div>
             <div class="flex flex-1 flex-col justify-between gap-3 py-1">
               <div>
                 <div class="mb-2 flex items-center justify-between">

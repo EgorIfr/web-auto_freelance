@@ -77,9 +77,11 @@
       
       <button
         type="submit"
-        class="w-full py-3 rounded-full bg-primary text-[#1c1c0d] font-bold hover:bg-orange-500 transition-colors shadow-sm"
+        id="callFormSubmit"
+        class="w-full py-3 rounded-full bg-primary text-[#1c1c0d] font-bold hover:bg-orange-500 transition-colors shadow-sm flex items-center justify-center gap-2"
       >
-        Отправить заявку
+        <span class="material-symbols-outlined text-xl">chat</span>
+        Отправить через WhatsApp
       </button>
     </form>
     
@@ -90,24 +92,36 @@
 </dialog>
 
 <script>
+  // =========================================================
+  // НАСТРОЙКА: Номер WhatsApp для получения заявок
+  // Формат: 79991234567 (без +, без скобок, без дефиса)
+  // =========================================================
+  const WHATSAPP_NUMBER = '79991234567'; // ← ЗАМЕНИТЕ НА СВОЙ НОМЕР
+
   const form = document.getElementById('callForm') as HTMLFormElement;
   const modal = document.getElementById('callModal') as HTMLDialogElement;
-  
+
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(form);
-    const name = formData.get('name');
-    const phone = formData.get('phone');
-    const message = formData.get('message') || 'Нет комментария';
-    
-    // Here you would normally send data to your backend
-    console.log('Form submitted:', { name, phone, message });
-    
-    // Show success message
-    alert(`Спасибо, ${name}! Мы перезвоним вам в ближайшее время на номер ${phone}`);
-    
-    // Reset form and close modal
+    const name = (formData.get('name') as string)?.trim() || 'Не указано';
+    const phone = (formData.get('phone') as string)?.trim() || 'Не указан';
+    const message = (formData.get('message') as string)?.trim();
+
+    // Формируем сообщение для WhatsApp
+    let waMessage = `🔧 *Новая заявка с сайта AutoElectric*%0A%0A`;
+    waMessage += `👤 *Имя:* ${encodeURIComponent(name)}%0A`;
+    waMessage += `📞 *Телефон:* ${encodeURIComponent(phone)}%0A`;
+    if (message) {
+      waMessage += `💬 *Комментарий:* ${encodeURIComponent(message)}%0A`;
+    }
+    waMessage += `%0A\u0412\u0440\u0435\u043c\u044f: ${encodeURIComponent(new Date().toLocaleString('ru-RU'))}`;
+
+    // Открываем WhatsApp в новой вкладке
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`, '_blank');
+
+    // Сбрасываем форму и закрываем модальное окно
     form.reset();
     modal?.close();
   });
